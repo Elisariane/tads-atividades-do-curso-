@@ -1,3 +1,4 @@
+ #-*- coding: utf-8 -*-
 import os
 import curses
 import pycfg
@@ -42,34 +43,50 @@ class os_t:
 		if (key == curses.KEY_ENTER) or (key == ord('\n')):
 			
 			self.console_comandos()
-			self.terminal.console_print("\r")
+			self.terminal.console_print("\n")
+			self.console_str = ""
+			return
+
+	def interrupt_memory_protection_fault (self):
+			self.syscall()
+			return
+
+	def interrupt_timer (self):
+			self.syscall()
 			return
 	
 		
 	def handle_interrupt (self, interrupt):
 		if (interrupt == pycfg.INTERRUPT_KEYBOARD):
 			self.interrupt_keyboard ()
-		#elif (interrupt == pycfg.INTERRUPT_TIMER):
-			#self.interrupt_timer ()
-			#self.terminal.console_print("\nIninterrompendo o ciclo\n")
-		#elif (interrupt == pycfg.INTERRUPT_MEMORY_PROTECTION_FAULT):
-			#self.interrupt_memory_protection_fault ()
-			#self.terminal.console_print("\nIninterrompendo memoria\n")
-			
+		elif (interrupt == pycfg.INTERRUPT_TIMER):
+			self.interrupt_timer ()
+			self.terminal.kernel_print("kernel: Interrupção de timer\n")
+		elif (interrupt == pycfg.INTERRUPT_MEMORY_PROTECTION_FAULT):
+			self.interrupt_memory_protection_fault ()
+			self.terminal.kernel_print("kernel: Interrupção de mémoria\n")
+	
 
 		return
 
 	def syscall (self):
+		msg = "Não está implementada"
+		self.terminal.kernel_print("kernel: " + msg + "\n")
 		
 		#self.terminal.app_print(msg)
 		return
 		
 	def console_comandos(self):		
+		comando = self.console_str.split(" ")
 		
-		if( self.console_str == "exit"):	
+		if( comando[0] == "exit"):	
 			self.terminal.console_print("Bye Bye ...")
 			self.terminal.end()
 			self.cpu.cpu_alive = False
+			return
+	
+		if(comando[0] == "start" and len(comando) == 2):
+			self.terminal.console_print("\nCarregando..."+comando[1])
 			
 
 				

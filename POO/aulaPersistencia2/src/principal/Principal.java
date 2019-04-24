@@ -16,25 +16,10 @@ public class Principal {
 		
 		Scanner entrada = new Scanner(System.in);
 
-		Estado estado = new Estado();
-		Estado teste = new Estado();
-
-		System.out.println("Nome do estado: ");
-		String nome = entrada.next();
-		estado.setNome(nome);
-		teste.setNome(nome);
 		
-		System.out.println("Sigla: ");
-		String sigla = entrada.next();
-		estado.setSigla(sigla);
-		teste.setSigla(sigla);
 		
-			new DaoEstado().salvar(estado);
-			new DaoEstado().salvar(teste);
 		
-		// persist salva
-		// merge altera
-		// remove apaga
-		// find busca
+		
+		System.out.println("----Tabelas----\n1- Estado\n2- Cidade");
 	}
 }

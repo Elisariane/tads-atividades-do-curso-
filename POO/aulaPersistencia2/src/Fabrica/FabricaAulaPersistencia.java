@@ -6,9 +6,13 @@ import javax.persistence.Persistence;
 public class FabricaAulaPersistencia {
 	//responsavel pelo mapeamento OR
 	//pesado, recomendado criar somente um
-	private static EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("aulaPersistencia");
+	private static EntityManagerFactory fabrica;
+	
 	
 	public static EntityManagerFactory getFabrica(){
+		if(fabrica == null) {
+			fabrica = Persistence.createEntityManagerFactory("aulaPersistencia");
+		}
 		return fabrica;
 	}
 }

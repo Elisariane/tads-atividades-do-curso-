@@ -22,7 +22,12 @@ public class DaoEstado {
 	}
 
 	Estado estado = new Estado();
-
+	
+	// persist salva
+	// merge altera
+	// remove apaga
+	// find busca
+	
 	public boolean salvar(Estado estado) {
 		try{
 		// gerenciador ... criar um para cada dao
@@ -86,14 +91,10 @@ public class DaoEstado {
 		try{// gerenciador ... criar um para cada dao
 			// representa a conexão e tem metodos CRUD
 			EntityManager gerenciador = fabrica.createEntityManager();
-			// gerencia a transação dos dados
-			EntityTransaction transacao = gerenciador.getTransaction();
-			
-			transacao.begin();
-			List<Estado> lista = gerenciador.createQuery("SELECT * FROM estado ", Estado.class).getResultList();
-			transacao.commit();
-			return lista;
-			
+		
+			return gerenciador.createQuery("SELECT e FROM Estado e", Estado.class).getResultList();
+	
+	
 			}catch(HibernateException e) {
 				e.printStackTrace();
 				return null;

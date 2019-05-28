@@ -9,7 +9,7 @@ import entidade.Estado;
 public class TelaEstado {
 
 	
-	public static void main(String[] args) {
+	public static void menuEstado() {
 		DaoEstado daoestado = new DaoEstado();
 		Scanner entrada = new Scanner (System.in);
 		boolean sair = false;

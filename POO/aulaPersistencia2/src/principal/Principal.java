@@ -22,7 +22,7 @@ public class Principal {
 		System.out.println("Opção: ");
 		op = entrada.nextInt();
 		if(op == 1 ) {
-			estado = new TelaEstado();
+			TelaEstado.menuEstado();
 		}
 		
 		

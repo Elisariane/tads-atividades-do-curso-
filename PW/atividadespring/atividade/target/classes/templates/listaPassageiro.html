@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmls:th="http://thymeleaf.org"
+	xmls:layout="http://www.ultraq.net/thymeleaf/layout">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+	
+	<h3>
+		<a href="/">Voltar</a>
+	</h3>
+
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Numero Voo</th>
+				<th>Peso</th>
+				<th>Altura</th>
+				<th>Largura</th>
+				<th>Comprimento</th>
+				<th>Valor a Pagar</th>
+
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="passageiro : ${passageiros}">
+	
+				<td><span th:text="${passageiro.nome}"></span></td>
+				<td><span th:text="${passageiro.cpf}"></span></td>
+				<td><span th:text="${passageiro.numVoo}"></span></td>
+				<td><span th:text="${passageiro.pesoMala}"></span></td>
+				<td><span th:text="${passageiro.altura}"></span></td>
+				<td><span th:text="${passageiro.largura}"></span></td>
+				<td><span th:text="${passageiro.comprimento}"></span></td>
+				<td><span th:text="${passageiro.valorTaxa}"></span></td>
+				
+			</tr>
+		</tbody>
+	</table>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

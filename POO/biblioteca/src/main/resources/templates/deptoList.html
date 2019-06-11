@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+xmls:th="http://thymeleaf.org"
+	xmls:layout="http://www.ultraq.net/thymeleaf/layout">
+  <head>
+    <meta charset="utf-8">
+    <title> Bibliotecador </title>
+  </head>
+  <style media="screen">
+    html, body,.raiz {
+      height:100%;
+      width:100%;
+      background-image: linear-gradient(red, yellow)
+    }
+    .formulario {
+      width:500px;
+      height:400px;
+      margin:auto;
+      border:2px solid #000;
+      padding:2px;
+      text-align:center;
+      background:#fff;
+    }
+    .form-group{
+      margin-top:1px;
+    }
+    h3{
+      margin-top:10px;
+      margin-bottom:0;
+    }
+    h4{
+      margin-top:0;
+    }
+    input {
+      width:100%;
+    }
+    .fakeBotao{
+      width:110px;
+      height:45px;
+      border: 2px solid black;
+      padding-top:5px;
+      text-align:center;
+      float:left;
+      margin-left: 2px;
+      color:white;
+      border-radius:100%;
+      background-image: radial-gradient(ellipse , red 10%, yellow 95%);
+    }
+    
+    .container{
+    margin:auto;
+    }
+  </style>
+  <body>
+    <div class="raiz">
+      <div class="formulario">
+        <h3> Bibliotecador </h3>
+        <h4> A Solução da sua dor de cabeça na biblioteca</h4>
+        <table class="container">
+        		<thead>
+        			<tr>
+                <th> Id </th>
+        				<th>Nome</th>
+                <th>Ações</th>
+
+
+
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr th:each="depto : ${deptos}">
+					<td><span th:text="${depto.id}"></span></td>
+        			<td><span th:text="${depto.nome}"></span></td>
+                	<td><a th:href="@{/editarDepto(id=${depto.id})}">Editar</a>
+                					<br />
+                					<a th:href="@{/excluirDepto(id=${depto.id})}">Excluir</a>
+                				</td>
+              </tr>
+        		</tbody>
+        	</table>
+        	<form action="/cadastrarDepartamento" class="form-signin" method="post">
+          <fieldset class="form-group">
+          <input type="hidden" name="id" th:value="${deptoedit != null ? deptoedit.id : null}" />
+            <label>Nome do Departamento</label>
+            <input type="text" 
+            th:value="${deptoedit != null ? deptoedit.nome : null}"
+            class="" name="nome" value="">
+          </fieldset>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+    </div>
+  </body>
+  <script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+var object = getParameterByName("id");
+if(!object){
+	document.getElementsByClassName('form-signin')[0].style.visibility = 'hidden';
+	
+}
+</script>
+</html>

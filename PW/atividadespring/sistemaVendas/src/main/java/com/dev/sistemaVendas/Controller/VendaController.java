@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dev.sistemaVendas.Model.Cliente;
 import com.dev.sistemaVendas.Model.ItensVenda;
+import com.dev.sistemaVendas.Model.Produto;
 import com.dev.sistemaVendas.Model.Venda;
+import com.dev.sistemaVendas.Repository.ClienteRepository;
 import com.dev.sistemaVendas.Repository.ItensVendaRepository;
 import com.dev.sistemaVendas.Repository.ProdutoRepository;
 import com.dev.sistemaVendas.Repository.VendaRepository;
@@ -31,6 +34,7 @@ public class VendaController {
 	@Autowired
 	private ItensVendaRepository itensVendaRepository;
 
+	
 	
 	private Venda venda = new Venda();// Instanciando um objeto venda
 	private ItensVenda itensVenda = new ItensVenda(); // Instanciando um objeto itensVenda
@@ -55,7 +59,9 @@ public class VendaController {
 		ModelAndView mv = new ModelAndView("/vendaAdd");
 		mv.addObject("venda", this.venda);// recebe o objeto que criamos acima
 		mv.addObject("itensVenda", this.itensVenda);// recebe o objeto que criamos acima
-
+		
+//		List<Produto> produto = produtoRepository.findAll();
+//		mv.addObject("produto", produto );
 		return mv;
 	}
 

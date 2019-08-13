@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Venda</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong>Cadastro de Vendas</strong>
+		</div>
+		<div class="panel-body container">
+			<div class="row">
+				<div class="col-lg-12">
+
+
+					<form class="form-horizontal" action="/inserirSalvarVenda"
+						method="POST" style="margin: 10px" th:object="${venda}">
+						
+						
+						
+						
+						
+						<div th:object="${cliente}" class="form-group row col-md-4">
+							<fieldset>
+								<legend>Cliente</legend>
+
+								<div class="form-group ">
+
+									<label for="select" class=" form-control-label">Cliente</label>
+									<select class="form-control" th:field="*{cliente}">
+										<option th:each="cliente : ${clientes}"
+											th:value="${cliente.id}" th:text="${cliente.nome}">
+										</option>
+									</select>
+									<div class="form-group row col-md-8">
+										<label>Observação</label> <input type="text"
+											class="form-control input-sm" autofocus="autofocus"
+											placeholder="Informe a Categoria do Post" maxlength="50"
+											id="observacao" name="observacao" value="" th:field="*{observacao}"> 
+									</div>
+								</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-1"></div>
+						</div>
+						</fieldset>
+				</div>
+
+				<h1>Inserir Itens</h1>
+
+				<div th:object=${itensVenda}>
+
+
+					<div class="form-group" th:object="${produto}">
+						<fieldset>
+							<legend>Produtos</legend>
+							<div class="col-md-4">
+								<label for="select" class=" form-control-label">Produto</label>
+								<select th:field="*{produto}">
+
+									<option th:each="prod : ${produtos}" th:value="${prod.id}"
+										th:text="${prod.nome}"></option>
+								</select>
+							</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Quantidade</label> <input type="text"
+								class="form-control input-sm" autofocus="autofocus"
+								placeholder="Informe a Categoria do Post" maxlength="50"
+								id="quantidade" name="quantidade" value="">
+						</div>
+					</div>
+					</fieldset>
+				</div>
+
+				<div class="form-group row">
+					<button type="submit" value="item" name="acao"
+						class="btn btn-sm btn-primary">Adicionar Itens</button>
+					<button type="submit" value="salvar" name="acao"
+						class="btn btn-sm btn-primary">Finalizar Venda</button>
+
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	</div>
+
+
+
+</body>
+</html>

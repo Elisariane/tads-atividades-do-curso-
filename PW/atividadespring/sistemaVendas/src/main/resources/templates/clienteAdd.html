@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmls:th="http://thymeleaf.org"
+	xmls:layout="http://www.ultraq.net/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<form th:object="${cliente}" method="post"
+		th:action="@{/salvarCliente}">
+		<div class="form-group">
+			<label>Nome</label> <input th:field="*{nome}" type="text"
+				class="form-control" placeholder="Nome Completo" maxlength="250">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">Nome</label> <input
+				th:field="*{endereco}" type="text" class="form-control"
+				placeholder="Informe o endereço" maxlength="250">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlInput1">CPF</label> <input
+				th:field="*{cpf}" type="text" class="form-control" placeholder="CPF"
+				maxlength="11">
+		
+		<div class="form-group col-md-6">
+
+			<label for="select" class=" form-control-label">Cidade</label> <select
+				th:field="*{cidade}" id="cidade" class="form-control">
+				<option th:each="cidade : ${cidades}" th:value="${cidade.id}"
+					th:text="${cidade.nome}" />
+			</select>
+		</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

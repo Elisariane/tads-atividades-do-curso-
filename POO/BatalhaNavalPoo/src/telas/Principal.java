@@ -39,6 +39,7 @@ public class Principal extends JFrame implements ActionListener {
 		setVisible(true);
 
 		setLocationRelativeTo(null);
+		
 	}
 
 	private void definirMenu() {
@@ -54,8 +55,8 @@ public class Principal extends JFrame implements ActionListener {
 		ajuda.add(regra);
 
 		// Action
-		modoJogador.add(this);
-		modoComputador.add(this);
+		modoJogador.addActionListener(this);
+		modoComputador.addActionListener(this);
 		
 		// Add no Desktop
 		add(desk);

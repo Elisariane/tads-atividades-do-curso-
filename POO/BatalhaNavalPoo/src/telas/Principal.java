@@ -1,13 +1,18 @@
 package telas;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 public class Principal extends JFrame implements ActionListener {
 
@@ -37,10 +42,11 @@ public class Principal extends JFrame implements ActionListener {
 		setSize(1024, 768);
 		definirMenu();
 		setVisible(true);
-
 		setLocationRelativeTo(null);
-		
+	
 	}
+
+
 
 	private void definirMenu() {
 		setJMenuBar(jmb);
@@ -78,6 +84,13 @@ public static void main(String[] args) {
 				desk.add(telaJogadorXComputador);
 			}
 
+		}
+		
+		else if (e.getSource() == modoJogador) {
+			if(telaJogadorXJogador == null) {
+				telaJogadorXJogador = PlayerVsPlayer.criarTela();
+				desk.add(telaJogadorXJogador);
+			}
 		}
 
 		

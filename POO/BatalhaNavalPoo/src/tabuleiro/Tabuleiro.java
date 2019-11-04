@@ -17,6 +17,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import barulinhos.Sound;
@@ -107,21 +108,32 @@ public class Tabuleiro extends JFrame implements ActionListener{
 		}
 		if(this.validaDisparo(x, y)) {
 			botao.setIcon(new ImageIcon("src\\images\\sub.png"));
-			JOptionPane.showMessageDialog(null, "Boa 06!");
+			Sound.play("src\\barulinhos\\acertou.wav");
 			contDestruidos++;
 		}else {
 			botao.setIcon(new ImageIcon("src\\images\\bomb.PNG"));
-		Sound.play("src\\barulinhos\\errou.wav");
+			Sound.play("src\\barulinhos\\errou.wav");
 		}
+		
 		if(contDisparo >= 10) {
-			if(contDestruidos == 0)
+			
+			if(contDestruidos == 0) {
+				
 			JOptionPane.showMessageDialog(null, "10 disparos e não acertou um! Cê é ruim");
-			else {
-				JOptionPane.showMessageDialog(null, "10 disparos e "+contDestruidos+" alvos destruídos! \nMUITO BOM");
+			
 			}
-		}else {
+			else {
+				
+			JOptionPane.showMessageDialog(null, "10 disparos e "+contDestruidos+" alvos destruídos! \nMUITO BOM");
+				
+				
+			}
+			
+		}
+		else {
 			contDisparo++;
 		}
+		
 	}
 	
 }

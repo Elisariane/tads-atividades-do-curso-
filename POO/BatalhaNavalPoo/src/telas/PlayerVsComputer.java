@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 import tabuleiro.Tabuleiro;
 
@@ -33,6 +34,29 @@ public class PlayerVsComputer extends JInternalFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		
+		int contDisparo = 0;
+		if(contDisparo >= 10) {
+			
+			int contDestruidos = 0;
+			if(contDestruidos == 0) {
+				
+			JOptionPane.showMessageDialog(null, "10 disparos e não acertou um! Cê é ruim");
+			
+			}
+			else {
+				
+			JOptionPane.showMessageDialog(null, "10 disparos e "+contDestruidos+" alvos destruídos! \nMUITO BOM");
+				
+				
+			}
+			
+		}
+		else {
+			contDisparo++;
+		}
+		
 	}
+	
 
 }

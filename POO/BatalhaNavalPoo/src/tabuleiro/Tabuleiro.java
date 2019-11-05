@@ -19,10 +19,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import barulinhos.Sound;
 
-public class Tabuleiro extends JFrame implements ActionListener{
+public class Tabuleiro extends JPanel implements ActionListener{
 	List<JButton> tabuleiro = new ArrayList<JButton>();
 
 	List<Navio> navios = new ArrayList<Navio>();

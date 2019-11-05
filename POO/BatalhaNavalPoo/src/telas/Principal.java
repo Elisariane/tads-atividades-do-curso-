@@ -16,6 +16,16 @@ import javax.swing.JPanel;
 
 public class Principal extends JFrame implements ActionListener {
 
+			public Principal() {
+		setTitle("Projeto Java POO");
+		setSize(1024, 768);
+		definirMenu();
+		setVisible(true);
+		setLocationRelativeTo(null);
+	
+	}
+
+	
 	// Criando um desktop
 	private JDesktopPane desk = new JDesktopPane();
 
@@ -29,7 +39,7 @@ public class Principal extends JFrame implements ActionListener {
 	// Criar o menu
 	private JMenu jogo = new JMenu("Batalha Naval");
 	private JMenu ajuda = new JMenu("Ajuda");
-	private JMenu conversores = new JMenu("Conversores");
+	//private JMenu conversores = new JMenu("Conversores");
 
 	// Criando o item para cada opção do menu
 	private JMenuItem modoJogador = new JMenuItem("Modo Player versus Player");
@@ -37,14 +47,6 @@ public class Principal extends JFrame implements ActionListener {
 
 	private JMenuItem regra = new JMenuItem("Regras - Batalha Naval");
 
-	public Principal() {
-		setTitle("Projeto Java POO");
-		setSize(1024, 768);
-		definirMenu();
-		setVisible(true);
-		setLocationRelativeTo(null);
-	
-	}
 
 
 

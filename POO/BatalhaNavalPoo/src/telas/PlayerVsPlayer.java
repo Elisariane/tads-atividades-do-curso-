@@ -1,5 +1,6 @@
 package telas;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,15 +28,14 @@ public class PlayerVsPlayer extends JInternalFrame implements ActionListener {
 
 	public PlayerVsPlayer() {
 		super("Batalha Naval", true, true, true);
-		GridLayout layout = new GridLayout(3, 2);
+		GridLayout layout = new GridLayout(1, 3);
+		
 		setLayout(layout);
 		tabuleiroPlayerUm = new Tabuleiro();
 		tabuleiroPlayerDois = new Tabuleiro();
-		add(tabuleiroPlayerUm).setSize(200, 200);
-		add(tabuleiroPlayerDois).setSize(200, 200);
-		
-		setSize(1600, 1080);
-
+		add(tabuleiroPlayerUm, BorderLayout.WEST);
+		add(tabuleiroPlayerDois, BorderLayout.EAST);
+		setSize(800,600);
 		setVisible(true);
 
 	}
@@ -48,9 +48,8 @@ public class PlayerVsPlayer extends JInternalFrame implements ActionListener {
 
 		return tela;
 	}
-
 	public void actionPerformed(ActionEvent e) {
-
+		
 	}
 
 }
